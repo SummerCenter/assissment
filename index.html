@@ -1,1249 +1,779 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة شموع المعرفة للصف الثاني - متابعة النتائج</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #8B4513;
-            --secondary: #DAA520;
-            --accent: #CD853F;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --text: #34495e;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #f9f5f0 100%);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(205, 133, 63, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 20%);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 25px 0;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: visible;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(25deg);
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1000;
-            gap: 20px;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex: 1;
-        }
-
-        .logo {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .school-info h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            font-weight: 800;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .school-info p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-
-        .platform-name {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .teacher-name {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-align: center;
-        }
-
-        .scrolling-info {
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            color: white;
-            padding: 18px;
-            border-radius: var(--border-radius);
-            margin-bottom: 35px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: var(--box-shadow);
-        }
-
-        .scrolling-content {
-            display: flex;
-            animation: scroll 35s linear infinite;
-            white-space: nowrap;
-        }
-
-        .scrolling-content p {
-            margin-left: 60px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .scrolling-content i {
-            font-size: 1.4rem;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .search-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 35px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .search-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to left, var(--primary), var(--accent));
-        }
-
-        .search-section h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .search-form {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: flex-end;
-            justify-content: center;
-        }
-
-        .form-group {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.9);
-            text-align: center;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.3);
-            background: white;
-        }
-
-        button {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: 700;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-        }
-
-        button:active {
-            transform: translateY(1px);
-        }
-
-        .student-info {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 35px;
-            display: none;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .student-info::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to left, var(--secondary), var(--accent));
-        }
-
-        .student-info.active {
-            display: block;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-
-        .student-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .student-name {
-            font-size: 2rem;
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        .student-class {
-            font-size: 1.3rem;
-            color: var(--secondary);
-            background: rgba(218, 165, 32, 0.1);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-        }
-
-        .student-subject {
-            font-size: 1.3rem;
-            color: var(--primary);
-            background: rgba(139, 69, 19, 0.1);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-        }
-
-        .grades-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 35px;
-        }
-
-        .grade-card {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 25px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            border-left: 5px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .grade-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(205, 133, 63, 0.05) 0%, transparent 100%);
-            z-index: 0;
-        }
-
-        .grade-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .grade-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .grade-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .grade-max {
-            font-size: 1rem;
-            color: #7f8c8d;
-            margin-top: 5px;
-        }
-
-        .progress-bar {
-            height: 12px;
-            background-color: #ecf0f1;
-            border-radius: 6px;
-            margin-top: 15px;
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 6px;
-            background: linear-gradient(to right, var(--accent), var(--secondary));
-            position: relative;
-            transition: width 1.5s ease;
-        }
-
-        .total-grade {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 35px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .total-grade::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(25deg);
-        }
-
-        .total-grade h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .total-grade .grade-value {
-            font-size: 4rem;
-            color: white;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .teacher-notes {
-            background: white;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-top: 35px;
-            position: relative;
-            overflow: hidden;
-            border-right: 5px solid var(--primary);
-        }
-
-        .teacher-notes::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, transparent 100%);
-        }
-
-        .teacher-notes h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .notes-content {
-            line-height: 1.8;
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        footer {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .school-name h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-
-        .copyright {
-            text-align: center;
-            width: 100%;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* تأثيرات الألوان الديناميكية */
-        .color-dynamic {
-            animation: colorShift 10s infinite alternate;
-        }
-
-        @keyframes colorShift {
-            0% {
-                background: linear-gradient(135deg, var(--primary), var(--secondary));
-            }
-            25% {
-                background: linear-gradient(135deg, #8B4513, #CD853F);
-            }
-            50% {
-                background: linear-gradient(135deg, #A0522D, #DAA520);
-            }
-            75% {
-                background: linear-gradient(135deg, #CD853F, #F4A460);
-            }
-            100% {
-                background: linear-gradient(135deg, var(--secondary), var(--primary));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 25px;
-            }
-            
-            .school-info h1 {
-                font-size: 1.5rem;
-            }
-            
-            .platform-name {
-                font-size: 1.1rem;
-                padding: 10px 20px;
-            }
-            
-            .student-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .exam-table {
-                font-size: 0.9rem;
-            }
-            
-            .exam-table th, .exam-table td {
-                padding: 10px;
-            }
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .loading-spinner {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--accent);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .error-message {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--danger);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            margin-top: 15px;
-            text-align: center;
-            border-right: 4px solid var(--danger);
-            display: none;
-        }
-
-        .success-message {
-            background: rgba(46, 204, 113, 0.1);
-            color: var(--success);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            margin-top: 15px;
-            text-align: center;
-            border-right: 4px solid var(--success);
-            display: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102f52">
+<title>منصة الرصد والتقويم |مادة التربية الإسلامية بمدرسة عباد بن بشر</title>
+<style>
+:root{
+  --navy:#102f52;--navy2:#183f68;--gold:#b99046;--ink:#17263a;
+  --muted:#718096;--bg:#f4f7fa;--line:#e5eaf0;--white:#fff;
+  --green:#147a5b;--green-bg:#eaf8f2;--amber:#9a6421;--amber-bg:#fff7e8;
+  --shadow:0 18px 50px rgba(16,47,82,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:radial-gradient(circle at 85% 0%,rgba(185,144,70,.10),transparent 24rem),linear-gradient(180deg,#eef3f7 0,#f8fafc 45%,#f4f7fa 100%);color:var(--ink);min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.shell{width:min(1050px,calc(100% - 28px));margin:auto;padding:22px 0 42px}
+.brandbar{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow);border-radius:25px;padding:15px 18px;margin-bottom:18px}
+.logo{width:76px;height:76px;object-fit:contain;border-radius:18px;background:#fff;border:1px solid var(--line);padding:5px}
+.brandcopy{flex:1}
+.ministry{font-size:12px;color:#667085;line-height:1.7}
+.school{font-size:18px;font-weight:800;color:var(--navy);margin-top:1px}
+.brandmark{font-size:11px;color:var(--gold);font-weight:800;letter-spacing:.04em}
+.hero{background:linear-gradient(135deg,var(--navy),#1c527e);border-radius:30px;overflow:hidden;box-shadow:0 25px 65px rgba(16,47,82,.18);position:relative}
+.hero-inner{position:relative;z-index:2;padding:38px;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.hero-title{color:#fff;font-size:38px;line-height:1.25;margin:0 0 9px;font-weight:900}
+.hero-en{color:#dbe7f1;font-size:14px}
+.hero-desc{color:#d6e3ed;line-height:1.9;font-size:15px;margin:20px 0 0}
+.gold-line{width:58px;height:4px;border-radius:9px;background:var(--gold);margin:17px 0}
+.login-card{background:#fff;padding:25px;border-radius:24px;box-shadow:0 18px 50px rgba(0,0,0,.13)}
+.login-card h2{margin:0 0 5px;color:var(--navy)}
+.login-card p{margin:0 0 20px;color:var(--muted);font-size:13px}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#344054}
+.control{width:100%;border:1px solid #dce3ea;background:#fbfcfd;border-radius:13px;padding:13px 14px;outline:none}
+.primary,.soft,.outline{border:0;border-radius:13px;padding:12px 16px;font-weight:800}
+.primary{background:var(--navy);color:#fff}
+.soft{background:#edf3f8;color:var(--navy)}
+.outline{background:#fff;color:var(--navy);border:1px solid #dce3ea}
+.full{width:100%}
+.status{margin:0 0 14px;padding:11px 14px;border-radius:12px;font-size:13px}
+.ok{background:var(--green-bg);color:var(--green)}
+.err{background:#fff0ef;color:#b42318}
+.section-card{background:white;border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);margin-bottom:15px}
+.topline{display:flex;justify-content:space-between;gap:14px;align-items:center}
+.welcome{font-size:20px;font-weight:900;color:var(--navy)}
+.sub{font-size:13px;color:var(--muted);margin-top:5px}
+.records-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.record{border:1px solid var(--line);background:white;border-radius:20px;padding:18px;text-align:right;position:relative}
+.record:after{content:"";position:absolute;right:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.record .subject{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:7px}
+.record .class{font-size:14px;color:#344054}
+.record .sheet{font-size:11px;color:#98a2b3;margin-top:8px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.student{padding:15px 2px;border-bottom:1px solid #edf0f3}
+.student-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.student-name{font-size:16px;font-weight:900;color:#25364c}
+.actions{display:flex;gap:7px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.badge{background:#f2f4f7;color:#667085;padding:5px 9px;border-radius:999px;font-size:11px;border:1px solid #eaecf0}
+.badge.done{background:var(--green-bg);color:var(--green);font-weight:800}
+.note-badge{background:var(--amber-bg);color:var(--amber)}
+.modal{position:fixed;inset:0;background:rgba(11,27,45,.62);display:flex;align-items:center;justify-content:center;padding:16px;z-index:999}
+.modal-box{width:min(570px,100%);max-height:90vh;overflow:auto;background:white;border-radius:24px;padding:22px}
+.modal-title{font-size:20px;font-weight:900;color:var(--navy);margin:0 0 15px}
+.existing{background:#f7f9fb;border:1px solid #edf0f3;border-radius:12px;padding:10px 12px;font-size:13px;color:#475467;margin-bottom:13px}
+.modal-actions{display:flex;gap:8px;margin-top:15px}
+.bulk-row{display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #edf0f3}
+.empty{text-align:center;padding:28px;color:#98a2b3}
+.footer{text-align:center;color:#98a2b3;font-size:11px;margin-top:18px;line-height:1.8}
+@media(max-width:800px){.hero-inner{grid-template-columns:1fr;padding:25px}.records-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.shell{width:min(100% - 18px,1050px)}.logo{width:62px;height:62px}.school{font-size:15px}.hero-inner{padding:21px}.hero-title{font-size:27px}.records-grid{grid-template-columns:1fr}.student-head{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{flex:1}}
+</style>
 </head>
 <body>
-    <header class="color-dynamic">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <img src="https://b.top4top.io/p_3598yip2y1.jpeg" alt="شعار مدرسة شموع المعرفة" class="logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTAiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCA5MCA5MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjkwIiBoZWlnaHQ9IjkwIiByeD0iNDUiIGZpbGw9IiM4QjQ1MTMiLz4KPHN2ZyB4PSIyNSIgeT0iMjUiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPgo8cGF0aCBkPSJNMTIgMTNWMTJNMTIgNlYxMk0xMiAxMkMxMiAxMiAxNSAxMiAxNSAxNUMxNSAxOCAxMiAyMSAxMiAyMUMxMiAyMSA5IDE4IDkgMTVDOSAxMiAxMiAxMiAxMiAxMloiLz4KPC9zdmc+Cjwvc3ZnPg=='">
-                    <div class="school-info">
-                        <h1>مدرسة شموع المعرفة حلقة أولى</h1>
-                        <p>منصة شموع المعرفة للصف الثاني</p>
-                    </div>
-                </div>
-                <div class="platform-name">
-                    <i class="fas fa-chart-line"></i> متابعة النتائج الدراسية
-                </div>
-                <div class="teacher-name">
-                    <i class="fas fa-chalkboard-teacher"></i> المعلمة: الاستاذة زهرة السكيتي
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <div class="container">
-        <section class="scrolling-info color-dynamic">
-            <div class="scrolling-content">
-                <p><i class="fas fa-lightbulb"></i> شموع المعرفة: نضيء عقول الطلاب وننير مستقبلهم</p>
-                <p><i class="fas fa-star"></i> تميزنا: نقدم تعليماً نوعياً يركز على القيم الإسلامية والتفوق الأكاديمي</p>
-                <p><i class="fas fa-graduation-cap"></i> رؤيتنا: تخريج جيل متمسك بهويته الإسلامية ومتميز علمياً</p>
-                <p><i class="fas fa-users"></i> شركاء النجاح: نعمل معاً لتحقيق أفضل النتائج لأبنائنا الطلاب</p>
-            </div>
-        </section>
+<div class="shell">
 
-        <section class="search-section">
-            <h2><i class="fas fa-search"></i> البحث عن نتائج الطالب</h2>
-            <div class="search-form">
-                <div class="form-group">
-                    <label for="studentId">رقم الطالب (8 أرقام)</label>
-                    <input type="text" id="studentId" placeholder="أدخل رقم الطالب المكون من 8 أرقام">
-                </div>
-                <div class="form-group">
-                    <label for="subject">المادة</label>
-                    <select id="subject">
-                        <option value="islamic">التربية الإسلامية</option>
-                        <option value="arabic">اللغة العربية</option>
-                    </select>
-                </div>
-                <button id="searchBtn">
-                    <i class="fas fa-search"></i> عرض النتائج
-                </button>
-            </div>
-            <div class="error-message" id="errorMessage"></div>
-            <div class="success-message" id="successMessage"></div>
-        </section>
+<header class="brandbar">
+  <img class="logo" src="https://h.top4top.io/p_39073mpdp1.jpg" alt="شعار مدرسة أبو الدرداء">
+  <div class="brandcopy">
+    <div class="ministry">سلطنة عُمان · وزارة التعليم<br>المديرية العامة للتعليم بمحافظة الظاهرة</div>
+    <div class="school">مدرسة عباد بن بشر للتعليم الأساسي(5-9)</div>
+  </div>
+  <div class="brandmark">ABAD School</div>
+</header>
 
-        <div class="loading" id="loadingIndicator">
-            <div class="loading-spinner"></div>
-            <p>جاري تحميل البيانات من السجلات الرسمية...</p>
-        </div>
+<div id="status"></div>
 
-        <section class="student-info" id="studentInfo">
-            <div class="student-header">
-                <h2 class="student-name" id="studentName">اسم الطالب</h2>
-                <div>
-                    <div class="student-class" id="studentClass">الصف</div>
-                    <div class="student-subject" id="studentSubject">المادة</div>
-                </div>
-            </div>
+<section id="loginView" class="hero">
+<div class="hero-inner">
+<div>
+  <div class="brandmark">DIGITAL ASSESSMENT</div>
+  <h1 class="hero-title">منصة الرصد والتقويم</h1>
+  <div class="hero-en">Assessment & Grade Entry Platform</div>
+  <div class="gold-line"></div>
+  <p class="hero-desc">منصة موحدة لرصد أداء الطلبة في جميع المواد الدراسية، مع إتاحة السجلات وفق صلاحيات كل معلم.</p>
+</div>
 
-            <!-- التربية الإسلامية -->
-            <div class="grades-container" id="islamicGrades">
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>التلاوة 1</span>
-                        <span class="grade-value" id="tilaawa1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 20 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="tilaawa1Progress"></div>
-                    </div>
-                </div>
+<div class="login-card">
+  <h2>تسجيل الدخول</h2>
+  <p>الدخول مخصص للهيئة التدريسية المصرح لها.</p>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>التلاوة 2</span>
-                        <span class="grade-value" id="tilaawa2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 20 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="tilaawa2Progress"></div>
-                    </div>
-                </div>
+  <div class="field">
+    <label>الرقم الوظيفي</label>
+    <input class="control" id="employeeId" inputmode="numeric">
+  </div>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>الحفظ 1</span>
-                        <span class="grade-value" id="hifz1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 20 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="hifz1Progress"></div>
-                    </div>
-                </div>
+  <div class="field">
+    <label>رمز الدخول PIN</label>
+    <input class="control" id="pin" type="password" inputmode="numeric">
+  </div>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>الحفظ 2</span>
-                        <span class="grade-value" id="hifz2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 20 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="hifz2Progress"></div>
-                    </div>
-                </div>
+  <button class="primary full" onclick="login()">دخول إلى سجلاتي</button>
+</div>
+</div>
+</section>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>مهارة التلاوة والحفظ</span>
-                        <span class="grade-value" id="skillsGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 70 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="skillsProgress"></div>
-                    </div>
-                </div>
+<section id="recordsView" class="hidden">
+  <div class="section-card">
+    <div class="topline">
+      <div>
+        <div class="welcome" id="teacherName"></div>
+        <div class="sub">السجلات المخصصة لك في مختلف المواد والصفوف</div>
+      </div>
+      <button class="outline" onclick="logout()">تسجيل الخروج</button>
+    </div>
+  </div>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>سؤال قصير 1</span>
-                        <span class="grade-value" id="shortQ1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="shortQ1Progress"></div>
-                    </div>
-                </div>
+  <div id="recordsGrid" class="records-grid"></div>
+</section>
 
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>سؤال قصير 2</span>
-                        <span class="grade-value" id="shortQ2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="shortQ2Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>نشاط عملي 1</span>
-                        <span class="grade-value" id="activity1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 10 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="activity1Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>نشاط عملي 2</span>
-                        <span class="grade-value" id="activity2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 10 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="activity2Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>المهارات العقلية</span>
-                        <span class="grade-value" id="mentalSkillsGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 30 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="mentalSkillsProgress"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- اللغة العربية -->
-            <div class="grades-container" id="arabicGrades" style="display: none;">
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>سؤال قصير 1</span>
-                        <span class="grade-value" id="arabicShortQ1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="arabicShortQ1Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>سؤال قصير 2</span>
-                        <span class="grade-value" id="arabicShortQ2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="arabicShortQ2Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>العرض الشفوي</span>
-                        <span class="grade-value" id="oralPresentationGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 25 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="oralPresentationProgress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>القراءة الجهرية</span>
-                        <span class="grade-value" id="readingGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 25 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="readingProgress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>فهم المقروء 1</span>
-                        <span class="grade-value" id="comprehension1Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="comprehension1Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>فهم المقروء 2</span>
-                        <span class="grade-value" id="comprehension2Grade">0</span>
-                    </div>
-                    <div class="grade-max">من 5 درجات</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="comprehension2Progress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>الإملاء</span>
-                        <span class="grade-value" id="dictationGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 15 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="dictationProgress"></div>
-                    </div>
-                </div>
-
-                <div class="grade-card">
-                    <div class="grade-title">
-                        <span>التعبير</span>
-                        <span class="grade-value" id="expressionGrade">0</span>
-                    </div>
-                    <div class="grade-max">من 15 درجة</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="expressionProgress"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="total-grade color-dynamic">
-                <h3>المجموع الكلي</h3>
-                <div class="grade-value" id="totalGrade">0</div>
-                <div class="grade-max">من 100 درجة</div>
-            </div>
-
-            <div class="teacher-notes">
-                <h3><i class="fas fa-clipboard-list"></i> ملاحظات المعلم</h3>
-                <div class="notes-content" id="teacherNotes">لا توجد ملاحظات حالياً</div>
-            </div>
-        </section>
+<section id="studentsView" class="hidden">
+  <div class="section-card">
+    <div class="topline">
+      <div>
+        <div class="welcome" id="recordTitle"></div>
+        <div class="sub" id="recordSub"></div>
+      </div>
+      <button class="outline" onclick="backToRecords()">العودة للسجلات</button>
     </div>
 
-    <footer class="color-dynamic">
-        <div class="container">
-            <div class="footer-content">
-                <div class="school-name">
-                    <h3>مدرسة شموع المعرفة حلقة أولى</h3>
-                    <p>منصة شموع المعرفة للصف الثاني</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2025 منصة شموع المعرفة لمتابعة النتائج الدراسية</p>
-            </div>
+    <div class="toolbar">
+      <button class="primary" onclick="openBulk()">رصد جماعي</button>
+      <button class="soft" onclick="refreshStudents()">تحديث البيانات</button>
+    </div>
+
+    <div class="field">
+      <input class="control" id="searchStudent" placeholder="ابحث باسم الطالب..." oninput="renderStudents()">
+    </div>
+
+    <div id="studentsList"></div>
+  </div>
+</section>
+
+<div class="footer">
+منصة الرصد والتقويم · مدرسة عباد بن بشر للتعليم الأساسي
+</div>
+
+</div>
+
+<div id="gradeModal" class="modal hidden">
+<div class="modal-box">
+  <h3 class="modal-title" id="gradeStudent"></h3>
+
+  <div id="gradeExisting" class="existing"></div>
+
+  <div class="field">
+    <label>أداة التقويم</label>
+    <select class="control" id="toolSelect" onchange="syncExistingGrade()"></select>
+  </div>
+
+  <div class="field">
+    <label>الدرجة</label>
+    <input class="control" id="gradeValue" type="number" step="any">
+  </div>
+
+  <div class="modal-actions">
+    <button class="primary" onclick="saveGrade()">حفظ / تحديث</button>
+    <button class="soft" onclick="closeModal('gradeModal')">إلغاء</button>
+  </div>
+</div>
+</div>
+
+<div id="noteModal" class="modal hidden">
+<div class="modal-box">
+  <h3 class="modal-title" id="noteStudent"></h3>
+
+  <div class="field">
+    <label>الملاحظة</label>
+    <textarea class="control" id="noteValue"></textarea>
+  </div>
+
+  <div class="modal-actions">
+    <button class="primary" onclick="saveNote()">حفظ / تحديث</button>
+    <button class="soft" onclick="closeModal('noteModal')">إلغاء</button>
+  </div>
+</div>
+</div>
+
+<div id="bulkModal" class="modal hidden">
+<div class="modal-box">
+  <h3 class="modal-title">الرصد الجماعي</h3>
+
+  <div class="field">
+    <label>أداة التقويم</label>
+    <select class="control" id="bulkToolSelect" onchange="renderBulkRows()"></select>
+  </div>
+
+  <div class="existing">الدرجات المرصودة سابقًا تظهر تلقائيًا ويمكن تعديلها.</div>
+
+  <div id="bulkRows"></div>
+
+  <div class="modal-actions">
+    <button class="primary" onclick="saveBulk()">حفظ الدرجات</button>
+    <button class="soft" onclick="closeModal('bulkModal')">إلغاء</button>
+  </div>
+</div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwtjJhWk97_jL-Tx8NBQIsd6hJgo15P5LJvoXxXnNvmq8nQFiYLk3NB8Mp1kEOLKlhB5w/exec";
+
+let session = {
+  employeeId: "",
+  pin: "",
+  teacher: "",
+  records: [],
+  currentRecord: null,
+  students: [],
+  tools: [],
+  selectedStudent: null
+};
+
+const $ = id => document.getElementById(id);
+
+function setStatus(message,type="ok") {
+  $("status").innerHTML =
+    message
+      ? `<div class="status ${type}">${message}</div>`
+      : "";
+}
+
+async function api(data) {
+  const response = await fetch(API_URL,{
+    method:"POST",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(data)
+  });
+
+  return await response.json();
+}
+
+async function login() {
+  const employeeId = $("employeeId").value.trim();
+  const pin = $("pin").value.trim();
+
+  if (!employeeId || !pin) {
+    return setStatus("أدخل الرقم الوظيفي وPIN.","err");
+  }
+
+  setStatus("جاري التحقق...");
+
+  try {
+    const data = await api({
+      action:"login",
+      employeeId,
+      pin
+    });
+
+    if (!data.success) {
+      return setStatus(
+        data.message || "تعذر تسجيل الدخول.",
+        "err"
+      );
+    }
+
+    session.employeeId = employeeId;
+    session.pin = pin;
+    session.teacher = data.teacher || "";
+    session.records = data.records || [];
+
+    $("teacherName").textContent =
+      "مرحبًا، " + session.teacher;
+
+    renderRecords();
+
+    $("loginView").classList.add("hidden");
+    $("recordsView").classList.remove("hidden");
+
+    setStatus("");
+
+  } catch(error) {
+    setStatus("تعذر الاتصال بالخدمة.","err");
+  }
+}
+
+function renderRecords() {
+  const grid = $("recordsGrid");
+  grid.innerHTML = "";
+
+  session.records.forEach((record,index) => {
+    const button = document.createElement("button");
+    button.className = "record";
+
+    button.innerHTML = `
+      <div class="subject">${record.subject || ""}</div>
+      <div class="class">${record.grade || ""} · الشعبة ${record.className || ""}</div>
+      <div class="sheet">${record.sheetName || ""}</div>
+    `;
+
+    button.onclick = () => openRecord(index);
+    grid.appendChild(button);
+  });
+}
+
+async function openRecord(index) {
+  session.currentRecord =
+    session.records[index];
+
+  $("recordTitle").textContent =
+    `${session.currentRecord.subject} · ${session.currentRecord.grade}/${session.currentRecord.className}`;
+
+  $("recordSub").textContent =
+    `المعلم: ${session.teacher}`;
+
+  setStatus("جاري تحميل سجل الطلبة...");
+
+  try {
+    await loadStudents();
+
+    $("recordsView").classList.add("hidden");
+    $("studentsView").classList.remove("hidden");
+
+    renderStudents();
+    setStatus("");
+
+  } catch(error) {
+    setStatus(
+      error.message || "تعذر تحميل السجل.",
+      "err"
+    );
+  }
+}
+
+async function loadStudents() {
+  const data = await api({
+    action:"students",
+    employeeId:session.employeeId,
+    pin:session.pin,
+    recordId:session.currentRecord.recordId
+  });
+
+  if (!data.success) {
+    throw new Error(
+      data.message || "تعذر تحميل السجل"
+    );
+  }
+
+  session.students = data.students || [];
+  session.tools = data.tools || [];
+}
+
+function renderStudents() {
+  const query =
+    $("searchStudent").value
+      .trim()
+      .toLowerCase();
+
+  const list = $("studentsList");
+  list.innerHTML = "";
+
+  const filtered =
+    session.students.filter(student =>
+      String(student.name)
+        .toLowerCase()
+        .includes(query)
+    );
+
+  if (!filtered.length) {
+    list.innerHTML =
+      '<div class="empty">لا توجد نتائج.</div>';
+    return;
+  }
+
+  filtered.forEach(student => {
+    const item =
+      document.createElement("div");
+
+    item.className = "student";
+
+    const badges =
+      (student.grades || [])
+        .map(grade => `
+          <span class="badge ${grade.value !== "" ? "done" : ""}">
+            ${grade.name}:
+            ${grade.value !== "" ? grade.value : "—"}
+          </span>
+        `)
+        .join("");
+
+    item.innerHTML = `
+      <div class="student-head">
+        <div class="student-name">${student.name}</div>
+
+        <div class="actions">
+          <button class="primary">درجة</button>
+          <button class="soft">ملاحظة</button>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchBtn = document.getElementById('searchBtn');
-            const studentInfo = document.getElementById('studentInfo');
-            const loadingIndicator = document.getElementById('loadingIndicator');
-            const errorMessage = document.getElementById('errorMessage');
-            const successMessage = document.getElementById('successMessage');
-            const subjectSelect = document.getElementById('subject');
-            
-            let islamicData = {};
-            let arabicData = {};
+      <div class="badges">
+        ${badges}
+        ${student.note
+          ? '<span class="badge note-badge">ملاحظة موجودة</span>'
+          : ''}
+      </div>
+    `;
 
-            // تحميل البيانات من جدول البيانات
-            async function loadDataFromSheets() {
-                try {
-                    loadingIndicator.style.display = 'block';
-                    errorMessage.style.display = 'none';
-                    successMessage.style.display = 'none';
-                    
-                    console.log('بدء تحميل البيانات من السجلات الرسمية...');
-                    
-                    // تحميل بيانات التربية الإسلامية
-                    const islamicResponse = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTZjBeQ6q6CI-03EJTlzKw4nkuT6dNX7Rd59ZKVTcLfHxkA9ZcI4K0QDjvmCdlZhAI8ycN7RoyisLpI/pub?gid=1112476829&single=true&output=csv');
-                    
-                    if (!islamicResponse.ok) {
-                        throw new Error(`فشل في تحميل بيانات التربية الإسلامية: ${islamicResponse.status} ${islamicResponse.statusText}`);
-                    }
-                    
-                    const islamicCsvData = await islamicResponse.text();
-                    islamicData = parseIslamicCSVData(islamicCsvData);
-                    
-                    // تحميل بيانات اللغة العربية
-                    const arabicResponse = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vT0UTyAUDuZkTTjqdOojwVfTuWx3ZSZTW2_GvfJCEnYdjIp00TXvO8Xw_z4JTV-FOr0obGeZrHg2wIq/pub?gid=1112476829&single=true&output=csv');
-                    
-                    if (!arabicResponse.ok) {
-                        throw new Error(`فشل في تحميل بيانات اللغة العربية: ${arabicResponse.status} ${arabicResponse.statusText}`);
-                    }
-                    
-                    const arabicCsvData = await arabicResponse.text();
-                    arabicData = parseArabicCSVData(arabicCsvData);
-                    
-                    console.log('بيانات التربية الإسلامية:', islamicData);
-                    console.log('بيانات اللغة العربية:', arabicData);
-                    
-                    if (Object.keys(islamicData).length > 0 || Object.keys(arabicData).length > 0) {
-                        successMessage.textContent = `✅ تم تحميل بيانات ${Object.keys(islamicData).length + Object.keys(arabicData).length} طالب من السجلات الرسمية`;
-                        successMessage.style.display = 'block';
-                    } else {
-                        throw new Error('لم يتم العثور على بيانات الطلاب في الجداول');
-                    }
-                    
-                    loadingIndicator.style.display = 'none';
-                    return true;
-                } catch (error) {
-                    console.error('حدث خطأ في تحميل البيانات:', error);
-                    loadingIndicator.style.display = 'none';
-                    
-                    errorMessage.textContent = `❌ خطأ في تحميل البيانات: ${error.message}. يرجى التأكد من صحة الروابط وإعدادات النشر`;
-                    errorMessage.style.display = 'block';
-                    return false;
-                }
-            }
+    const buttons =
+      item.querySelectorAll("button");
 
-            // معالجة بيانات CSV للتربية الإسلامية
-            function parseIslamicCSVData(csv) {
-                const lines = csv.split('\n').filter(line => line.trim() !== '');
-                const result = {};
-                
-                if (lines.length < 2) return result;
-                
-                for (let i = 1; i < lines.length; i++) {
-                    const currentLine = parseCSVLine(lines[i]);
-                    
-                    if (currentLine.length >= 17) {
-                        const studentId = currentLine[1];
-                        
-                        if (studentId && studentId.length >= 2) {
-                            result[studentId] = {
-                                name: currentLine[2] || "غير معروف",
-                                class: currentLine[3] || "غير محدد",
-                                subject: currentLine[4] || "التربية الإسلامية",
-                                notes: currentLine[5] || "لا توجد ملاحظات",
-                                tilaawa1: parseFloat(currentLine[6]) || 0,
-                                tilaawa2: parseFloat(currentLine[7]) || 0,
-                                hifz1: parseFloat(currentLine[8]) || 0,
-                                hifz2: parseFloat(currentLine[9]) || 0,
-                                skills: parseFloat(currentLine[10]) || 0,
-                                shortQ1: parseFloat(currentLine[11]) || 0,
-                                shortQ2: parseFloat(currentLine[12]) || 0,
-                                activity1: parseFloat(currentLine[13]) || 0,
-                                activity2: parseFloat(currentLine[14]) || 0,
-                                mentalSkills: parseFloat(currentLine[15]) || 0,
-                                total: parseFloat(currentLine[16]) || 0
-                            };
-                        }
-                    }
-                }
-                
-                return result;
-            }
+    buttons[0].onclick =
+      () => openGrade(student);
 
-            // معالجة بيانات CSV للغة العربية
-            function parseArabicCSVData(csv) {
-                const lines = csv.split('\n').filter(line => line.trim() !== '');
-                const result = {};
-                
-                if (lines.length < 2) return result;
-                
-                for (let i = 1; i < lines.length; i++) {
-                    const currentLine = parseCSVLine(lines[i]);
-                    
-                    if (currentLine.length >= 15) {
-                        const studentId = currentLine[1];
-                        
-                        if (studentId && studentId.length >= 2) {
-                            result[studentId] = {
-                                name: currentLine[2] || "غير معروف",
-                                class: currentLine[3] || "غير محدد",
-                                subject: currentLine[4] || "اللغة العربية",
-                                notes: currentLine[5] || "لا توجد ملاحظات",
-                                shortQ1: parseFloat(currentLine[6]) || 0,
-                                shortQ2: parseFloat(currentLine[7]) || 0,
-                                oralPresentation: parseFloat(currentLine[8]) || 0,
-                                reading: parseFloat(currentLine[9]) || 0,
-                                comprehension1: parseFloat(currentLine[10]) || 0,
-                                comprehension2: parseFloat(currentLine[11]) || 0,
-                                dictation: parseFloat(currentLine[12]) || 0,
-                                expression: parseFloat(currentLine[13]) || 0,
-                                total: parseFloat(currentLine[14]) || 0
-                            };
-                        }
-                    }
-                }
-                
-                return result;
-            }
+    buttons[1].onclick =
+      () => openNote(student);
 
-            function parseCSVLine(line) {
-                const result = [];
-                let current = '';
-                let inQuotes = false;
-                
-                for (let i = 0; i < line.length; i++) {
-                    const char = line[i];
-                    
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        result.push(current.trim());
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                
-                result.push(current.trim());
-                return result;
-            }
+    list.appendChild(item);
+  });
+}
 
-            // البحث عن طالب
-            searchBtn.addEventListener('click', function() {
-                const studentId = document.getElementById('studentId').value.trim();
-                const subject = subjectSelect.value;
-                
-                if (!studentId) {
-                    errorMessage.textContent = '❌ يرجى إدخال رقم الطالب';
-                    errorMessage.style.display = 'block';
-                    successMessage.style.display = 'none';
-                    return;
-                }
-                
-                const studentIdPattern = /^\d{8}$/;
-                if (!studentIdPattern.test(studentId)) {
-                    errorMessage.textContent = '❌ رقم الطالب غير صحيح. يرجى استخدام 8 أرقام فقط (مثال: 12345678)';
-                    errorMessage.style.display = 'block';
-                    successMessage.style.display = 'none';
-                    return;
-                }
-                
-                if (subject === 'islamic' && islamicData[studentId]) {
-                    const student = islamicData[studentId];
-                    displayIslamicStudentData(student);
-                } else if (subject === 'arabic' && arabicData[studentId]) {
-                    const student = arabicData[studentId];
-                    displayArabicStudentData(student);
-                } else {
-                    errorMessage.textContent = '❌ رقم الطالب غير موجود في السجلات الرسمية. يرجى التحقق من الرقم والمادة والمحاولة مرة أخرى.';
-                    errorMessage.style.display = 'block';
-                    successMessage.style.display = 'none';
-                    studentInfo.classList.remove('active');
-                }
-            });
+function fillTools(id) {
+  const select = $(id);
+  select.innerHTML = "";
 
-            // عرض بيانات الطالب للتربية الإسلامية
-            function displayIslamicStudentData(student) {
-                document.getElementById('studentName').textContent = student.name;
-                document.getElementById('studentClass').textContent = student.class;
-                document.getElementById('studentSubject').textContent = student.subject;
-                
-                document.getElementById('tilaawa1Grade').textContent = student.tilaawa1;
-                document.getElementById('tilaawa2Grade').textContent = student.tilaawa2;
-                document.getElementById('hifz1Grade').textContent = student.hifz1;
-                document.getElementById('hifz2Grade').textContent = student.hifz2;
-                document.getElementById('skillsGrade').textContent = student.skills;
-                document.getElementById('shortQ1Grade').textContent = student.shortQ1;
-                document.getElementById('shortQ2Grade').textContent = student.shortQ2;
-                document.getElementById('activity1Grade').textContent = student.activity1;
-                document.getElementById('activity2Grade').textContent = student.activity2;
-                document.getElementById('mentalSkillsGrade').textContent = student.mentalSkills;
-                document.getElementById('totalGrade').textContent = student.total;
-                
-                errorMessage.style.display = 'none';
-                successMessage.style.display = 'none';
-                
-                resetProgressBars();
-                
-                setTimeout(() => {
-                    document.getElementById('tilaawa1Progress').style.width = `${(student.tilaawa1 / 20) * 100}%`;
-                    document.getElementById('tilaawa2Progress').style.width = `${(student.tilaawa2 / 20) * 100}%`;
-                    document.getElementById('hifz1Progress').style.width = `${(student.hifz1 / 20) * 100}%`;
-                    document.getElementById('hifz2Progress').style.width = `${(student.hifz2 / 20) * 100}%`;
-                    document.getElementById('skillsProgress').style.width = `${(student.skills / 70) * 100}%`;
-                    document.getElementById('shortQ1Progress').style.width = `${(student.shortQ1 / 5) * 100}%`;
-                    document.getElementById('shortQ2Progress').style.width = `${(student.shortQ2 / 5) * 100}%`;
-                    document.getElementById('activity1Progress').style.width = `${(student.activity1 / 10) * 100}%`;
-                    document.getElementById('activity2Progress').style.width = `${(student.activity2 / 10) * 100}%`;
-                    document.getElementById('mentalSkillsProgress').style.width = `${(student.mentalSkills / 30) * 100}%`;
-                }, 100);
-                
-                document.getElementById('teacherNotes').textContent = student.notes;
-                
-                // إظهار قسم التربية الإسلامية وإخفاء قسم اللغة العربية
-                document.getElementById('islamicGrades').style.display = 'grid';
-                document.getElementById('arabicGrades').style.display = 'none';
-                
-                studentInfo.classList.add('active');
-                studentInfo.scrollIntoView({ behavior: 'smooth' });
-            }
+  session.tools.forEach(tool => {
+    const option =
+      document.createElement("option");
 
-            // عرض بيانات الطالب للغة العربية
-            function displayArabicStudentData(student) {
-                document.getElementById('studentName').textContent = student.name;
-                document.getElementById('studentClass').textContent = student.class;
-                document.getElementById('studentSubject').textContent = student.subject;
-                
-                document.getElementById('arabicShortQ1Grade').textContent = student.shortQ1;
-                document.getElementById('arabicShortQ2Grade').textContent = student.shortQ2;
-                document.getElementById('oralPresentationGrade').textContent = student.oralPresentation;
-                document.getElementById('readingGrade').textContent = student.reading;
-                document.getElementById('comprehension1Grade').textContent = student.comprehension1;
-                document.getElementById('comprehension2Grade').textContent = student.comprehension2;
-                document.getElementById('dictationGrade').textContent = student.dictation;
-                document.getElementById('expressionGrade').textContent = student.expression;
-                document.getElementById('totalGrade').textContent = student.total;
-                
-                errorMessage.style.display = 'none';
-                successMessage.style.display = 'none';
-                
-                resetProgressBars();
-                
-                setTimeout(() => {
-                    document.getElementById('arabicShortQ1Progress').style.width = `${(student.shortQ1 / 5) * 100}%`;
-                    document.getElementById('arabicShortQ2Progress').style.width = `${(student.shortQ2 / 5) * 100}%`;
-                    document.getElementById('oralPresentationProgress').style.width = `${(student.oralPresentation / 25) * 100}%`;
-                    document.getElementById('readingProgress').style.width = `${(student.reading / 25) * 100}%`;
-                    document.getElementById('comprehension1Progress').style.width = `${(student.comprehension1 / 5) * 100}%`;
-                    document.getElementById('comprehension2Progress').style.width = `${(student.comprehension2 / 5) * 100}%`;
-                    document.getElementById('dictationProgress').style.width = `${(student.dictation / 15) * 100}%`;
-                    document.getElementById('expressionProgress').style.width = `${(student.expression / 15) * 100}%`;
-                }, 100);
-                
-                document.getElementById('teacherNotes').textContent = student.notes;
-                
-                // إظهار قسم اللغة العربية وإخفاء قسم التربية الإسلامية
-                document.getElementById('islamicGrades').style.display = 'none';
-                document.getElementById('arabicGrades').style.display = 'grid';
-                
-                studentInfo.classList.add('active');
-                studentInfo.scrollIntoView({ behavior: 'smooth' });
-            }
+    option.value = tool.column;
+    option.textContent = tool.name;
 
-            function resetProgressBars() {
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    bar.style.width = '0%';
-                });
-            }
+    select.appendChild(option);
+  });
+}
 
-            // تحميل البيانات عند بدء التشغيل
-            loadDataFromSheets();
-        });
-    </script>
+function openGrade(student) {
+  session.selectedStudent = student;
+
+  $("gradeStudent").textContent =
+    student.name;
+
+  fillTools("toolSelect");
+
+  if (session.tools.length) {
+    syncExistingGrade();
+  } else {
+    $("gradeExisting").textContent =
+      "لم يتم اكتشاف أدوات تقويم في هذا السجل.";
+
+    $("gradeValue").value = "";
+  }
+
+  $("gradeModal").classList.remove("hidden");
+}
+
+function syncExistingGrade() {
+  const column =
+    Number($("toolSelect").value);
+
+  const grade =
+    (session.selectedStudent.grades || [])
+      .find(
+        item =>
+          Number(item.column) === column
+      );
+
+  const value =
+    grade ? grade.value : "";
+
+  $("gradeValue").value = value;
+
+  $("gradeExisting").textContent =
+    value !== ""
+      ? "الدرجة المرصودة حاليًا: " + value
+      : "لم تُرصد درجة لهذا البند بعد.";
+}
+
+function openNote(student) {
+  session.selectedStudent = student;
+
+  $("noteStudent").textContent =
+    student.name;
+
+  $("noteValue").value =
+    student.note || "";
+
+  $("noteModal").classList.remove("hidden");
+}
+
+async function saveGrade() {
+  if (!session.tools.length) return;
+
+  const column =
+    Number($("toolSelect").value);
+
+  const grade =
+    $("gradeValue").value;
+
+  if (grade === "") {
+    return alert("أدخل الدرجة");
+  }
+
+  try {
+    const data = await api({
+      action:"saveGrade",
+      employeeId:session.employeeId,
+      pin:session.pin,
+      recordId:session.currentRecord.recordId,
+      row:session.selectedStudent.row,
+      column,
+      grade
+    });
+
+    if (!data.success) {
+      return setStatus(
+        data.message || "تعذر الحفظ.",
+        "err"
+      );
+    }
+
+    const oldGrade =
+      (session.selectedStudent.grades || [])
+        .find(
+          item =>
+            Number(item.column) === column
+        );
+
+    if (oldGrade) {
+      oldGrade.value =
+        String(grade);
+    }
+
+    closeModal("gradeModal");
+    renderStudents();
+
+    setStatus(
+      "تم حفظ الدرجة بنجاح."
+    );
+
+  } catch(error) {
+    setStatus(
+      "تعذر حفظ الدرجة.",
+      "err"
+    );
+  }
+}
+
+async function saveNote() {
+  const note =
+    $("noteValue").value.trim();
+
+  if (!note) {
+    return alert("اكتب الملاحظة");
+  }
+
+  try {
+    const data = await api({
+      action:"saveNote",
+      employeeId:session.employeeId,
+      pin:session.pin,
+      recordId:session.currentRecord.recordId,
+      row:session.selectedStudent.row,
+      note
+    });
+
+    if (!data.success) {
+      return setStatus(
+        data.message || "تعذر الحفظ.",
+        "err"
+      );
+    }
+
+    session.selectedStudent.note =
+      note;
+
+    closeModal("noteModal");
+    renderStudents();
+
+    setStatus(
+      "تم حفظ الملاحظة بنجاح."
+    );
+
+  } catch(error) {
+    setStatus(
+      "تعذر حفظ الملاحظة.",
+      "err"
+    );
+  }
+}
+
+function openBulk() {
+  if (!session.tools.length) {
+    return setStatus(
+      "لم يتم اكتشاف أدوات تقويم في هذا السجل.",
+      "err"
+    );
+  }
+
+  fillTools("bulkToolSelect");
+  renderBulkRows();
+
+  $("bulkModal").classList.remove("hidden");
+}
+
+function renderBulkRows() {
+  const column =
+    Number($("bulkToolSelect").value);
+
+  const box =
+    $("bulkRows");
+
+  box.innerHTML = "";
+
+  session.students.forEach(student => {
+    const current =
+      (student.grades || [])
+        .find(
+          item =>
+            Number(item.column) === column
+        );
+
+    const value =
+      current ? current.value : "";
+
+    const row =
+      document.createElement("div");
+
+    row.className = "bulk-row";
+
+    row.innerHTML = `
+      <div>${student.name}</div>
+      <input
+        class="control"
+        type="number"
+        step="any"
+        data-row="${student.row}"
+        value="${value}"
+        placeholder="الدرجة"
+      >
+    `;
+
+    box.appendChild(row);
+  });
+}
+
+async function saveBulk() {
+  const column =
+    Number($("bulkToolSelect").value);
+
+  const inputs =
+    [...document.querySelectorAll("#bulkRows input")];
+
+  const grades =
+    inputs
+      .filter(input => input.value !== "")
+      .map(input => ({
+        row:Number(input.dataset.row),
+        grade:input.value
+      }));
+
+  if (!grades.length) {
+    return alert(
+      "أدخل درجة واحدة على الأقل"
+    );
+  }
+
+  try {
+    const data = await api({
+      action:"saveBulkGrades",
+      employeeId:session.employeeId,
+      pin:session.pin,
+      recordId:session.currentRecord.recordId,
+      column,
+      grades
+    });
+
+    if (!data.success) {
+      return setStatus(
+        data.message || "تعذر الحفظ.",
+        "err"
+      );
+    }
+
+    closeModal("bulkModal");
+
+    await loadStudents();
+    renderStudents();
+
+    setStatus(
+      data.message ||
+      "تم حفظ الدرجات."
+    );
+
+  } catch(error) {
+    setStatus(
+      "تعذر حفظ الدرجات.",
+      "err"
+    );
+  }
+}
+
+async function refreshStudents() {
+  setStatus(
+    "جاري تحديث البيانات..."
+  );
+
+  try {
+    await loadStudents();
+    renderStudents();
+
+    setStatus(
+      "تم تحديث البيانات."
+    );
+
+  } catch(error) {
+    setStatus(
+      error.message ||
+      "تعذر التحديث.",
+      "err"
+    );
+  }
+}
+
+function closeModal(id) {
+  $(id).classList.add("hidden");
+}
+
+function backToRecords() {
+  $("studentsView").classList.add("hidden");
+  $("recordsView").classList.remove("hidden");
+
+  session.currentRecord = null;
+  session.students = [];
+  session.tools = [];
+  session.selectedStudent = null;
+
+  setStatus("");
+}
+
+function logout() {
+  session = {
+    employeeId:"",
+    pin:"",
+    teacher:"",
+    records:[],
+    currentRecord:null,
+    students:[],
+    tools:[],
+    selectedStudent:null
+  };
+
+  $("recordsView").classList.add("hidden");
+  $("studentsView").classList.add("hidden");
+  $("loginView").classList.remove("hidden");
+
+  $("employeeId").value = "";
+  $("pin").value = "";
+
+  setStatus("");
+}
+</script>
+
 </body>
 </html>
