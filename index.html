@@ -13,7 +13,6 @@
    نظام التصميم الديناميكي المتقدم
    ═══════════════════════════════════════════════ */
 :root{
-  /* الألوان الديناميكية الأساسية */
   --c-deep:#0a1a2f;
   --c-navy:#0f2b4d;
   --c-royal:#1a4a7a;
@@ -21,13 +20,11 @@
   --c-azure:#3b82c4;
   --c-sky:#60a5d8;
   
-  /* الذهبي المتدرج */
   --c-gold-1:#d4af37;
   --c-gold-2:#e6c458;
   --c-gold-3:#f5d97a;
   --c-gold-4:#c9a227;
   
-  /* الألوان المحايدة */
   --c-white:#ffffff;
   --c-cream:#fafbfd;
   --c-mist:#f0f4f9;
@@ -36,7 +33,6 @@
   --c-slate:#475569;
   --c-charcoal:#1e293b;
   
-  /* الألوان الوظيفية */
   --c-success:#059669;
   --c-success-bg:#ecfdf5;
   --c-warning:#d97706;
@@ -44,7 +40,6 @@
   --c-danger:#dc2626;
   --c-danger-bg:#fef2f2;
   
-  /* الظلال المتدرجة */
   --s-xs:0 1px 2px rgba(10,26,47,.04);
   --s-sm:0 2px 8px rgba(10,26,47,.06), 0 1px 2px rgba(10,26,47,.04);
   --s-md:0 8px 24px rgba(10,26,47,.08), 0 2px 6px rgba(10,26,47,.04);
@@ -54,12 +49,10 @@
   --s-gold:0 8px 32px rgba(212,175,55,.3), 0 2px 8px rgba(212,175,55,.15);
   --s-inner:inset 0 1px 0 rgba(255,255,255,.1);
   
-  /* الحدود */
   --b-subtle:1px solid rgba(226,232,240,.8);
   --b-light:1px solid rgba(203,213,225,.6);
   --b-gold:1px solid rgba(212,175,55,.4);
   
-  /* الانتقالات المتقدمة */
   --t-instant:0.1s cubic-bezier(0.4, 0, 0.2, 1);
   --t-fast:0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --t-base:0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -67,7 +60,6 @@
   --t-bounce:0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   --t-smooth:0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
-  /* الحواف */
   --r-xs:6px;
   --r-sm:10px;
   --r-md:16px;
@@ -93,7 +85,6 @@ body{
   position:relative;
 }
 
-/* ═══ خلفية ديناميكية متحركة ═══ */
 body::before{
   content:"";
   position:fixed;
@@ -115,7 +106,6 @@ body::before{
   75%{background-position:50% 75%, 50% 50%, 30% 70%, 0% 0%}
 }
 
-/* ═══ طبقة الجزيئات المتحركة ═══ */
 .particles{
   position:fixed;
   inset:0;
@@ -142,9 +132,6 @@ button{cursor:pointer;border:none;background:none;-webkit-tap-highlight-color:tr
 button:active{transform:scale(.97)}
 .hidden{display:none!important}
 
-/* ═══════════════════════════════════════════════
-   الحاوية الرئيسية
-   ═══════════════════════════════════════════════ */
 .shell{
   width:min(1120px,calc(100% - 32px));
   margin:auto;
@@ -153,9 +140,6 @@ button:active{transform:scale(.97)}
   z-index:1;
 }
 
-/* ═══════════════════════════════════════════════
-   شريط الهوية - Glassmorphism
-   ═══════════════════════════════════════════════ */
 .brandbar{
   display:flex;
   align-items:center;
@@ -263,9 +247,6 @@ button:active{transform:scale(.97)}
   white-space:nowrap;
 }
 
-/* ═══════════════════════════════════════════════
-   البطاقة البطلة - Cinematic Hero
-   ═══════════════════════════════════════════════ */
 .hero{
   background:linear-gradient(135deg, rgba(10,26,47,.92) 0%, rgba(15,43,77,.95) 50%, rgba(26,74,122,.9) 100%);
   backdrop-filter:blur(20px);
@@ -279,7 +260,6 @@ button:active{transform:scale(.97)}
   border:1px solid rgba(255,255,255,.08);
 }
 
-/* تدرج ديناميكي متحرك داخل البطلة */
 .hero::before{
   content:"";
   position:absolute;
@@ -298,7 +278,6 @@ button:active{transform:scale(.97)}
   66%{background-position:0% 100%, 100% 0%, 70% 30%}
 }
 
-/* أشعة ضوئية متحركة */
 .hero::after{
   content:"";
   position:absolute;
@@ -328,7 +307,6 @@ button:active{transform:scale(.97)}
   align-items:center;
 }
 
-/* النص الرئيسي */
 .hero-title{
   color:#fff;
   font-size:46px;
@@ -377,9 +355,6 @@ button:active{transform:scale(.97)}
   50%{background-position:100% center;box-shadow:0 0 32px rgba(212,175,55,.7), 0 0 64px rgba(212,175,55,.3)}
 }
 
-/* ═══════════════════════════════════════════════
-   بطاقة تسجيل الدخول
-   ═══════════════════════════════════════════════ */
 .login-card{
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(32px) saturate(180%);
@@ -417,7 +392,6 @@ button:active{transform:scale(.97)}
   font-weight:500;
 }
 
-/* ═══ الحقول ═══ */
 .field{margin-bottom:18px}
 .field label{
   display:block;
@@ -453,7 +427,6 @@ button:active{transform:scale(.97)}
 }
 .control::placeholder{color:#a8b4c4;font-weight:400}
 
-/* ═══ الأزرار ═══ */
 .primary,.soft,.outline{
   border-radius:var(--r-md);
   padding:14px 22px;
@@ -496,6 +469,11 @@ button:active{transform:scale(.97)}
 }
 .primary:hover::before{transform:translateX(100%)}
 .primary:active{transform:translateY(0)}
+.primary:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+}
 
 .soft{
   background:linear-gradient(135deg, var(--c-mist), #e6eef8);
@@ -526,7 +504,6 @@ button:active{transform:scale(.97)}
 }
 .full{width:100%}
 
-/* ═══ رسائل الحالة ═══ */
 .status{
   margin:0 0 20px;
   padding:15px 20px;
@@ -582,10 +559,35 @@ button:active{transform:scale(.97)}
   font-weight:900;
   flex-shrink:0;
 }
+.info{
+  background:linear-gradient(135deg, #eff6ff, #dbeafe);
+  color:var(--c-sapphire);
+  border-color:rgba(37,99,168,.2);
+  box-shadow:0 4px 16px rgba(37,99,168,.1);
+}
+.info::before{
+  content:"ℹ";
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;height:22px;
+  border-radius:50%;
+  background:var(--c-sapphire);
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  flex-shrink:0;
+}
+.status .spinner{
+  width:18px;height:18px;
+  border:2.5px solid rgba(37,99,168,.2);
+  border-top-color:var(--c-sapphire);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  flex-shrink:0;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ═══════════════════════════════════════════════
-   البطاقات
-   ═══════════════════════════════════════════════ */
 .section-card{
   background:rgba(255,255,255,.97);
   backdrop-filter:blur(20px);
@@ -642,9 +644,6 @@ button:active{transform:scale(.97)}
   font-weight:500;
 }
 
-/* ═══════════════════════════════════════════════
-   شبكة السجلات - بطاقات ديناميكية
-   ═══════════════════════════════════════════════ */
 .records-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -726,7 +725,6 @@ button:active{transform:scale(.97)}
   border-top:1px dashed rgba(226,232,240,.9);
 }
 
-/* ═══ شريط الأدوات ═══ */
 .toolbar{
   display:flex;
   gap:12px;
@@ -734,9 +732,6 @@ button:active{transform:scale(.97)}
   margin:24px 0;
 }
 
-/* ═══════════════════════════════════════════════
-   بطاقة الطالب
-   ═══════════════════════════════════════════════ */
 .student{
   padding:20px 6px;
   border-bottom:1px solid rgba(226,232,240,.7);
@@ -781,7 +776,6 @@ button:active{transform:scale(.97)}
 .actions{display:flex;gap:9px}
 .actions button{padding:10px 18px;font-size:13px}
 
-/* ═══ الشارات ═══ */
 .badges{
   display:flex;
   flex-wrap:wrap;
@@ -833,9 +827,6 @@ button:active{transform:scale(.97)}
 }
 .note-badge::before{content:"📝";font-size:10px}
 
-/* ═══════════════════════════════════════════════
-   النوافذ المنبثقة - Cinematic Modal
-   ═══════════════════════════════════════════════ */
 .modal{
   position:fixed;
   inset:0;
@@ -933,7 +924,6 @@ button:active{transform:scale(.97)}
 }
 .modal-actions button{flex:1}
 
-/* ═══ الصفوف الجماعية ═══ */
 .bulk-row{
   display:grid;
   grid-template-columns:1fr 130px;
@@ -950,7 +940,6 @@ button:active{transform:scale(.97)}
 }
 .bulk-row:last-child{border-bottom:none}
 
-/* ═══ الحالة الفارغة ═══ */
 .empty{
   text-align:center;
   padding:56px 24px;
@@ -971,7 +960,21 @@ button:active{transform:scale(.97)}
   50%{transform:translateY(-8px)}
 }
 
-/* ═══ التذييل ═══ */
+.skeleton{
+  background:linear-gradient(90deg, #f0f4f9 25%, #e2e8f0 50%, #f0f4f9 75%);
+  background-size:200% 100%;
+  animation:shimmerBg 1.5s ease-in-out infinite;
+  border-radius:var(--r-md);
+}
+@keyframes shimmerBg{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.skeleton-row{
+  height:70px;
+  margin-bottom:12px;
+}
+
 .footer{
   text-align:center;
   color:rgba(255,255,255,.5);
@@ -991,7 +994,6 @@ button:active{transform:scale(.97)}
   border-radius:var(--r-full);
 }
 
-/* ═══ شريط التمرير المخصص ═══ */
 ::-webkit-scrollbar{width:12px;height:12px}
 ::-webkit-scrollbar-track{
   background:rgba(10,26,47,.2);
@@ -1008,15 +1010,11 @@ button:active{transform:scale(.97)}
   background-clip:padding-box;
 }
 
-/* ═══ تحديد النص ═══ */
 ::selection{
   background:rgba(212,175,55,.3);
   color:var(--c-deep);
 }
 
-/* ═══════════════════════════════════════════════
-   التجاوب
-   ═══════════════════════════════════════════════ */
 @media(max-width:960px){
   .records-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -1055,7 +1053,6 @@ button:active{transform:scale(.97)}
   .modal-title{font-size:19px}
 }
 
-/* ═══ تقليل الحركة لمن يفضل ذلك ═══ */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{
     animation-duration:0.01ms!important;
@@ -1067,7 +1064,6 @@ button:active{transform:scale(.97)}
 </head>
 <body>
 
-<!-- طبقة الجزيئات المتحركة -->
 <div class="particles" id="particles"></div>
 
 <div class="shell">
@@ -1109,7 +1105,7 @@ button:active{transform:scale(.97)}
     <input class="control" id="pin" type="password" inputmode="numeric" placeholder="أدخل رمز الدخول">
   </div>
 
-  <button class="primary full" onclick="login()">دخول إلى سجلاتي</button>
+  <button class="primary full" id="loginBtn" onclick="login()">دخول إلى سجلاتي</button>
 </div>
 </div>
 </section>
@@ -1174,7 +1170,7 @@ button:active{transform:scale(.97)}
   </div>
 
   <div class="modal-actions">
-    <button class="primary" onclick="saveGrade()">حفظ / تحديث</button>
+    <button class="primary" id="saveGradeBtn" onclick="saveGrade()">حفظ / تحديث</button>
     <button class="soft" onclick="closeModal('gradeModal')">إلغاء</button>
   </div>
 </div>
@@ -1190,7 +1186,7 @@ button:active{transform:scale(.97)}
   </div>
 
   <div class="modal-actions">
-    <button class="primary" onclick="saveNote()">حفظ / تحديث</button>
+    <button class="primary" id="saveNoteBtn" onclick="saveNote()">حفظ / تحديث</button>
     <button class="soft" onclick="closeModal('noteModal')">إلغاء</button>
   </div>
 </div>
@@ -1210,7 +1206,7 @@ button:active{transform:scale(.97)}
   <div id="bulkRows"></div>
 
   <div class="modal-actions">
-    <button class="primary" onclick="saveBulk()">حفظ الدرجات</button>
+    <button class="primary" id="saveBulkBtn" onclick="saveBulk()">حفظ الدرجات</button>
     <button class="soft" onclick="closeModal('bulkModal')">إلغاء</button>
   </div>
 </div>
@@ -1219,6 +1215,7 @@ button:active{transform:scale(.97)}
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwtjJhWk97_jL-Tx8NBQIsd6hJgo15P5LJvoXxXnNvmq8nQFiYLk3NB8Mp1kEOLKlhB5w/exec";
 
+/* ═══ حالة التطبيق ═══ */
 let session = {
   employeeId: "",
   pin: "",
@@ -1227,7 +1224,9 @@ let session = {
   currentRecord: null,
   students: [],
   tools: [],
-  selectedStudent: null
+  selectedStudent: null,
+  studentsCache: {},   // تخزين مؤقت حسب recordId
+  isLoading: false
 };
 
 const $ = id => document.getElementById(id);
@@ -1237,6 +1236,7 @@ function createParticles() {
   const container = $("particles");
   if (!container) return;
   const count = window.innerWidth < 600 ? 12 : 24;
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
     const p = document.createElement("div");
     p.className = "particle";
@@ -1246,27 +1246,59 @@ function createParticles() {
     p.style.left = Math.random() * 100 + "%";
     p.style.animationDuration = (Math.random() * 20 + 15) + "s";
     p.style.animationDelay = (Math.random() * 20) + "s";
-    container.appendChild(p);
+    fragment.appendChild(p);
   }
+  container.appendChild(fragment);
 }
 createParticles();
 
-/* ═══ إدارة الحالة ═══ */
+/* ═══════════════════════════════════════════════
+   إدارة الحالة والرسائل
+   ═══════════════════════════════════════════════ */
 function setStatus(message, type = "ok") {
-  $("status").innerHTML = message
-    ? `<div class="status ${type}">${message}</div>`
-    : "";
+  const el = $("status");
+  if (!message) {
+    el.innerHTML = "";
+    return;
+  }
+
+  let content = message;
+  // مؤشر تحميل تلقائي إذا كانت الرسالة تشير للتحميل
+  if (type === "info" && (message.includes("تحميل") || message.includes("حفظ") || message.includes("تحديث") || message.includes("التحقق"))) {
+    content = `<span class="spinner"></span><span>${message}</span>`;
+  }
+
+  el.innerHTML = `<div class="status ${type}">${content}</div>`;
 }
 
-async function api(data) {
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify(data)
-  });
-  return await response.json();
+/* ═══════════════════════════════════════════════
+   API call مع مهلة زمنية ومعالجة أخطاء
+   ═══════════════════════════════════════════════ */
+async function api(data, timeout = 30000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data),
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    return await response.json();
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error.name === "AbortError") {
+      throw new Error("انتهت مهلة الاتصال. تحقق من الإنترنت وحاول مجدداً.");
+    }
+    throw error;
+  }
 }
 
+/* ═══════════════════════════════════════════════
+   تسجيل الدخول
+   ═══════════════════════════════════════════════ */
 async function login() {
   const employeeId = $("employeeId").value.trim();
   const pin = $("pin").value.trim();
@@ -1275,13 +1307,16 @@ async function login() {
     return setStatus("أدخل الرقم الوظيفي وPIN.", "err");
   }
 
-  setStatus("جاري التحقق...");
+  const btn = $("loginBtn");
+  btn.disabled = true;
+  setStatus("جاري التحقق من البيانات...", "info");
 
   try {
     const data = await api({ action: "login", employeeId, pin });
 
     if (!data.success) {
-      return setStatus(data.message || "تعذر تسجيل الدخول.", "err");
+      setStatus(data.message || "تعذر تسجيل الدخول.", "err");
+      return;
     }
 
     session.employeeId = employeeId;
@@ -1295,15 +1330,20 @@ async function login() {
     $("loginView").classList.add("hidden");
     $("recordsView").classList.remove("hidden");
     setStatus("");
-
   } catch (error) {
-    setStatus("تعذر الاتصال بالخدمة.", "err");
+    setStatus(error.message || "تعذر الاتصال بالخدمة.", "err");
+  } finally {
+    btn.disabled = false;
   }
 }
 
+/* ═══════════════════════════════════════════════
+   عرض السجلات
+   ═══════════════════════════════════════════════ */
 function renderRecords() {
   const grid = $("recordsGrid");
   grid.innerHTML = "";
+  const fragment = document.createDocumentFragment();
 
   session.records.forEach((record, index) => {
     const button = document.createElement("button");
@@ -1314,35 +1354,80 @@ function renderRecords() {
       <div class="sheet">${record.sheetName || ""}</div>
     `;
     button.onclick = () => openRecord(index);
-    grid.appendChild(button);
+    fragment.appendChild(button);
   });
+
+  grid.appendChild(fragment);
 }
 
+/* ═══════════════════════════════════════════════
+   فتح سجل طلبة (مع تخزين مؤقت)
+   ═══════════════════════════════════════════════ */
 async function openRecord(index) {
   session.currentRecord = session.records[index];
+  const recordId = session.currentRecord.recordId;
+
   $("recordTitle").textContent =
     `${session.currentRecord.subject} · ${session.currentRecord.grade}/${session.currentRecord.className}`;
   $("recordSub").textContent = `المعلم: ${session.teacher}`;
 
-  setStatus("جاري تحميل سجل الطلبة...");
+  // استخدام التخزين المؤقت إن وُجد
+  if (session.studentsCache[recordId]) {
+    session.students = session.studentsCache[recordId].students;
+    session.tools = session.studentsCache[recordId].tools;
 
-  try {
-    await loadStudents();
     $("recordsView").classList.add("hidden");
     $("studentsView").classList.remove("hidden");
     renderStudents();
     setStatus("");
+    return;
+  }
+
+  // عرض هياكل تحميل
+  $("recordsView").classList.add("hidden");
+  $("studentsView").classList.remove("hidden");
+  showStudentsSkeleton();
+  setStatus("جاري تحميل سجل الطلبة...", "info");
+
+  try {
+    await loadStudents();
+    renderStudents();
+    setStatus("");
   } catch (error) {
+    $("studentsList").innerHTML =
+      `<div class="empty">${error.message || "تعذر تحميل السجل."}</div>`;
     setStatus(error.message || "تعذر تحميل السجل.", "err");
   }
 }
 
-async function loadStudents() {
+function showStudentsSkeleton() {
+  const list = $("studentsList");
+  list.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    const row = document.createElement("div");
+    row.className = "skeleton skeleton-row";
+    list.appendChild(row);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   تحميل الطلبة
+   ═══════════════════════════════════════════════ */
+async function loadStudents(forceRefresh = false) {
+  const recordId = session.currentRecord.recordId;
+
+  // إذا كان هناك تخزين مؤقت ولم يُطلب تحديث قسري
+  if (!forceRefresh && session.studentsCache[recordId]) {
+    session.students = session.studentsCache[recordId].students;
+    session.tools = session.studentsCache[recordId].tools;
+    return;
+  }
+
   const data = await api({
     action: "students",
     employeeId: session.employeeId,
     pin: session.pin,
-    recordId: session.currentRecord.recordId
+    recordId: recordId
   });
 
   if (!data.success) {
@@ -1351,12 +1436,20 @@ async function loadStudents() {
 
   session.students = data.students || [];
   session.tools = data.tools || [];
+
+  // تحديث التخزين المؤقت
+  session.studentsCache[recordId] = {
+    students: session.students,
+    tools: session.tools
+  };
 }
 
+/* ═══════════════════════════════════════════════
+   عرض قائمة الطلبة
+   ═══════════════════════════════════════════════ */
 function renderStudents() {
   const query = $("searchStudent").value.trim().toLowerCase();
   const list = $("studentsList");
-  list.innerHTML = "";
 
   const filtered = session.students.filter(student =>
     String(student.name).toLowerCase().includes(query)
@@ -1366,6 +1459,8 @@ function renderStudents() {
     list.innerHTML = '<div class="empty">لا توجد نتائج.</div>';
     return;
   }
+
+  const fragment = document.createDocumentFragment();
 
   filtered.forEach(student => {
     const item = document.createElement("div");
@@ -1397,21 +1492,40 @@ function renderStudents() {
     buttons[0].onclick = () => openGrade(student);
     buttons[1].onclick = () => openNote(student);
 
-    list.appendChild(item);
+    fragment.appendChild(item);
   });
+
+  list.innerHTML = "";
+  list.appendChild(fragment);
 }
 
+/* ═══════════════════════════════════════════════
+   تعبئة قوائم الأدوات
+   ═══════════════════════════════════════════════ */
 function fillTools(id) {
   const select = $(id);
+  const currentValue = select.value;
   select.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
   session.tools.forEach(tool => {
     const option = document.createElement("option");
     option.value = tool.column;
     option.textContent = tool.name;
-    select.appendChild(option);
+    fragment.appendChild(option);
   });
+
+  select.appendChild(fragment);
+
+  // استعادة الاختيار السابق إن وُجد
+  if (currentValue && [...select.options].some(o => o.value === currentValue)) {
+    select.value = currentValue;
+  }
 }
 
+/* ═══════════════════════════════════════════════
+   نافذة الدرجة الفردية
+   ═══════════════════════════════════════════════ */
 function openGrade(student) {
   session.selectedStudent = student;
   $("gradeStudent").textContent = student.name;
@@ -1425,6 +1539,7 @@ function openGrade(student) {
   }
 
   $("gradeModal").classList.remove("hidden");
+  setTimeout(() => $("gradeValue").focus(), 100);
 }
 
 function syncExistingGrade() {
@@ -1439,13 +1554,20 @@ function syncExistingGrade() {
     value !== "" ? "الدرجة المرصودة حاليًا: " + value : "لم تُرصد درجة لهذا البند بعد.";
 }
 
+/* ═══════════════════════════════════════════════
+   نافذة الملاحظة
+   ═══════════════════════════════════════════════ */
 function openNote(student) {
   session.selectedStudent = student;
   $("noteStudent").textContent = student.name;
   $("noteValue").value = student.note || "";
   $("noteModal").classList.remove("hidden");
+  setTimeout(() => $("noteValue").focus(), 100);
 }
 
+/* ═══════════════════════════════════════════════
+   حفظ الدرجة الفردية (مع تحديث محلي)
+   ═══════════════════════════════════════════════ */
 async function saveGrade() {
   if (!session.tools.length) return;
 
@@ -1453,6 +1575,9 @@ async function saveGrade() {
   const grade = $("gradeValue").value;
 
   if (grade === "") return alert("أدخل الدرجة");
+
+  const btn = $("saveGradeBtn");
+  btn.disabled = true;
 
   try {
     const data = await api({
@@ -1466,25 +1591,32 @@ async function saveGrade() {
     });
 
     if (!data.success) {
-      return setStatus(data.message || "تعذر الحفظ.", "err");
+      setStatus(data.message || "تعذر الحفظ.", "err");
+      return;
     }
 
-    const oldGrade = (session.selectedStudent.grades || []).find(
-      item => Number(item.column) === column
-    );
-    if (oldGrade) oldGrade.value = String(grade);
+    // تحديث محلي مباشر بدون إعادة تحميل
+    updateStudentGradeLocally(session.selectedStudent.row, column, grade);
 
     closeModal("gradeModal");
     renderStudents();
     setStatus("تم حفظ الدرجة بنجاح.");
   } catch (error) {
-    setStatus("تعذر حفظ الدرجة.", "err");
+    setStatus(error.message || "تعذر حفظ الدرجة.", "err");
+  } finally {
+    btn.disabled = false;
   }
 }
 
+/* ═══════════════════════════════════════════════
+   حفظ الملاحظة (مع تحديث محلي)
+   ═══════════════════════════════════════════════ */
 async function saveNote() {
   const note = $("noteValue").value.trim();
   if (!note) return alert("اكتب الملاحظة");
+
+  const btn = $("saveNoteBtn");
+  btn.disabled = true;
 
   try {
     const data = await api({
@@ -1497,18 +1629,27 @@ async function saveNote() {
     });
 
     if (!data.success) {
-      return setStatus(data.message || "تعذر الحفظ.", "err");
+      setStatus(data.message || "تعذر الحفظ.", "err");
+      return;
     }
 
-    session.selectedStudent.note = note;
+    // تحديث محلي
+    const student = session.students.find(s => s.row === session.selectedStudent.row);
+    if (student) student.note = note;
+
     closeModal("noteModal");
     renderStudents();
     setStatus("تم حفظ الملاحظة بنجاح.");
   } catch (error) {
-    setStatus("تعذر حفظ الملاحظة.", "err");
+    setStatus(error.message || "تعذر حفظ الملاحظة.", "err");
+  } finally {
+    btn.disabled = false;
   }
 }
 
+/* ═══════════════════════════════════════════════
+   الرصد الجماعي
+   ═══════════════════════════════════════════════ */
 function openBulk() {
   if (!session.tools.length) {
     return setStatus("لم يتم اكتشاف أدوات تقويم في هذا السجل.", "err");
@@ -1521,7 +1662,8 @@ function openBulk() {
 function renderBulkRows() {
   const column = Number($("bulkToolSelect").value);
   const box = $("bulkRows");
-  box.innerHTML = "";
+
+  const fragment = document.createDocumentFragment();
 
   session.students.forEach(student => {
     const current = (student.grades || []).find(
@@ -1536,8 +1678,11 @@ function renderBulkRows() {
       <input class="control" type="number" step="any"
         data-row="${student.row}" value="${value}" placeholder="الدرجة">
     `;
-    box.appendChild(row);
+    fragment.appendChild(row);
   });
+
+  box.innerHTML = "";
+  box.appendChild(fragment);
 }
 
 async function saveBulk() {
@@ -1553,6 +1698,10 @@ async function saveBulk() {
 
   if (!grades.length) return alert("أدخل درجة واحدة على الأقل");
 
+  const btn = $("saveBulkBtn");
+  btn.disabled = true;
+  setStatus("جاري حفظ الدرجات...", "info");
+
   try {
     const data = await api({
       action: "saveBulkGrades",
@@ -1564,22 +1713,60 @@ async function saveBulk() {
     });
 
     if (!data.success) {
-      return setStatus(data.message || "تعذر الحفظ.", "err");
+      setStatus(data.message || "تعذر الحفظ.", "err");
+      return;
     }
 
+    // تحديث محلي لكل طالب
+    grades.forEach(g => {
+      updateStudentGradeLocally(g.row, column, g.grade);
+    });
+
     closeModal("bulkModal");
-    await loadStudents();
     renderStudents();
-    setStatus(data.message || "تم حفظ الدرجات.");
+    setStatus(data.message || `تم حفظ ${grades.length} درجة بنجاح.`);
   } catch (error) {
-    setStatus("تعذر حفظ الدرجات.", "err");
+    setStatus(error.message || "تعذر حفظ الدرجات.", "err");
+  } finally {
+    btn.disabled = false;
   }
 }
 
+/* ═══════════════════════════════════════════════
+   تحديث الدرجة محلياً + التخزين المؤقت
+   ═══════════════════════════════════════════════ */
+function updateStudentGradeLocally(row, column, value) {
+  const student = session.students.find(s => s.row === row);
+  if (!student) return;
+
+  if (!student.grades) student.grades = [];
+
+  const existing = student.grades.find(g => Number(g.column) === column);
+  if (existing) {
+    existing.value = String(value);
+  } else {
+    const tool = session.tools.find(t => Number(t.column) === column);
+    student.grades.push({
+      column: column,
+      name: tool ? tool.name : "",
+      value: String(value)
+    });
+  }
+
+  // تحديث التخزين المؤقت
+  const recordId = session.currentRecord.recordId;
+  if (session.studentsCache[recordId]) {
+    session.studentsCache[recordId].students = session.students;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   تحديث قسري من الخادم
+   ═══════════════════════════════════════════════ */
 async function refreshStudents() {
-  setStatus("جاري تحديث البيانات...");
+  setStatus("جاري تحديث البيانات...", "info");
   try {
-    await loadStudents();
+    await loadStudents(true); // true = تحديث قسري
     renderStudents();
     setStatus("تم تحديث البيانات.");
   } catch (error) {
@@ -1587,6 +1774,9 @@ async function refreshStudents() {
   }
 }
 
+/* ═══════════════════════════════════════════════
+   مساعدات
+   ═══════════════════════════════════════════════ */
 function closeModal(id) {
   $(id).classList.add("hidden");
 }
@@ -1610,7 +1800,9 @@ function logout() {
     currentRecord: null,
     students: [],
     tools: [],
-    selectedStudent: null
+    selectedStudent: null,
+    studentsCache: {},
+    isLoading: false
   };
 
   $("recordsView").classList.add("hidden");
@@ -1620,6 +1812,35 @@ function logout() {
   $("pin").value = "";
   setStatus("");
 }
+
+/* ═══ إغلاق النوافذ بمفتاح Escape ═══ */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    ["gradeModal", "noteModal", "bulkModal"].forEach(id => {
+      const modal = $(id);
+      if (modal && !modal.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+      }
+    });
+  }
+});
+
+/* ═══ إغلاق النافذة بالنقر خارجها ═══ */
+document.querySelectorAll(".modal").forEach(modal => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+});
+
+/* ═══ إرسال النموذج بمفتاح Enter في تسجيل الدخول ═══ */
+$("pin").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") login();
+});
+$("employeeId").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") $("pin").focus();
+});
 </script>
 
 </body>
