@@ -827,6 +827,9 @@ button:active{transform:scale(.97)}
 }
 .note-badge::before{content:"📝";font-size:10px}
 
+/* ═══════════════════════════════════════════════
+   النوافذ المنبثقة - تم إصلاح مشكلة القصّ
+   ═══════════════════════════════════════════════ */
 .modal{
   position:fixed;
   inset:0;
@@ -845,7 +848,8 @@ button:active{transform:scale(.97)}
 .modal-box{
   width:min(600px,100%);
   max-height:90vh;
-  overflow:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
   background:linear-gradient(145deg, #ffffff, #fafbfd);
   border-radius:var(--r-xl);
   padding:32px;
@@ -855,7 +859,6 @@ button:active{transform:scale(.97)}
     0 0 0 1px rgba(255,255,255,.5);
   animation:modalIn .4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position:relative;
-  overflow:hidden;
 }
 .modal-box::before{
   content:"";
@@ -865,6 +868,7 @@ button:active{transform:scale(.97)}
   background:linear-gradient(90deg, var(--c-gold-1), var(--c-sapphire), var(--c-gold-1));
   background-size:200% auto;
   animation:goldLine 4s ease-in-out infinite;
+  border-radius:var(--r-xl) var(--r-xl) 0 0;
 }
 @keyframes modalIn{
   from{opacity:0;transform:scale(.92) translateY(20px)}
@@ -924,6 +928,64 @@ button:active{transform:scale(.97)}
 }
 .modal-actions button{flex:1}
 
+/* ═══════════════════════════════════════════════
+   نافذة الرصد الجماعي - إصلاح التمرير
+   ═══════════════════════════════════════════════ */
+.bulk-modal-box{
+  display:flex;
+  flex-direction:column;
+  max-height:90vh;
+  padding:24px 28px 20px;
+}
+
+.bulk-rows-container{
+  flex:1 1 auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+  margin:8px -8px 0;
+  padding:0 8px;
+  min-height:150px;
+  max-height:55vh;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+.bulk-rows-container::-webkit-scrollbar{
+  width:8px;
+}
+.bulk-rows-container::-webkit-scrollbar-track{
+  background:rgba(10,26,47,.05);
+  border-radius:var(--r-full);
+}
+.bulk-rows-container::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg, var(--c-sapphire), var(--c-royal));
+  border-radius:var(--r-full);
+}
+.bulk-rows-container::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg, var(--c-azure), var(--c-sapphire));
+}
+
+.bulk-modal-box .modal-actions{
+  flex-shrink:0;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid rgba(226,232,240,.8);
+}
+
+.bulk-counter{
+  font-size:13px;
+  color:var(--c-slate);
+  font-weight:600;
+  margin:6px 2px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.bulk-counter strong{
+  color:var(--c-sapphire);
+  font-weight:900;
+}
+
 .bulk-row{
   display:grid;
   grid-template-columns:1fr 130px;
@@ -939,6 +1001,18 @@ button:active{transform:scale(.97)}
   padding-right:14px;
 }
 .bulk-row:last-child{border-bottom:none}
+
+.bulk-row .student-label{
+  font-weight:700;
+  color:var(--c-charcoal);
+  font-size:14.5px;
+}
+
+.bulk-row input{
+  padding:11px 14px;
+  font-size:14px;
+  text-align:center;
+}
 
 .empty{
   text-align:center;
@@ -1048,7 +1122,9 @@ button:active{transform:scale(.97)}
   .actions{width:100%}
   .actions button{flex:1}
   .modal-box{padding:24px 20px}
-  .bulk-row{grid-template-columns:1fr;gap:8px}
+  .bulk-modal-box{padding:20px 16px 16px}
+  .bulk-rows-container{max-height:50vh}
+  .bulk-row{grid-template-columns:1fr;gap:8px;padding:12px 4px}
   .topline{flex-direction:column;align-items:flex-start}
   .modal-title{font-size:19px}
 }
@@ -1193,7 +1269,7 @@ button:active{transform:scale(.97)}
 </div>
 
 <div id="bulkModal" class="modal hidden">
-<div class="modal-box">
+<div class="modal-box bulk-modal-box">
   <h3 class="modal-title">الرصد الجماعي</h3>
 
   <div class="field">
@@ -1201,9 +1277,14 @@ button:active{transform:scale(.97)}
     <select class="control" id="bulkToolSelect" onchange="renderBulkRows()"></select>
   </div>
 
-  <div class="existing">الدرجات المرصودة سابقًا تظهر تلقائيًا ويمكن تعديلها.</div>
+  <div class="existing">الدرجات المرصودة سابقًا تظهر تلقائيًا ويمكن تعديلها. مرر للأسفل لرؤية جميع الطلبة.</div>
 
-  <div id="bulkRows"></div>
+  <div class="bulk-counter">
+    <span>عدد الطلبة: <strong id="bulkTotalCount">0</strong></span>
+    <span>المرصود: <strong id="bulkFilledCount">0</strong></span>
+  </div>
+
+  <div id="bulkRows" class="bulk-rows-container"></div>
 
   <div class="modal-actions">
     <button class="primary" id="saveBulkBtn" onclick="saveBulk()">حفظ الدرجات</button>
@@ -1225,7 +1306,7 @@ let session = {
   students: [],
   tools: [],
   selectedStudent: null,
-  studentsCache: {},   // تخزين مؤقت حسب recordId
+  studentsCache: {},
   isLoading: false
 };
 
@@ -1263,7 +1344,6 @@ function setStatus(message, type = "ok") {
   }
 
   let content = message;
-  // مؤشر تحميل تلقائي إذا كانت الرسالة تشير للتحميل
   if (type === "info" && (message.includes("تحميل") || message.includes("حفظ") || message.includes("تحديث") || message.includes("التحقق"))) {
     content = `<span class="spinner"></span><span>${message}</span>`;
   }
@@ -1371,7 +1451,6 @@ async function openRecord(index) {
     `${session.currentRecord.subject} · ${session.currentRecord.grade}/${session.currentRecord.className}`;
   $("recordSub").textContent = `المعلم: ${session.teacher}`;
 
-  // استخدام التخزين المؤقت إن وُجد
   if (session.studentsCache[recordId]) {
     session.students = session.studentsCache[recordId].students;
     session.tools = session.studentsCache[recordId].tools;
@@ -1383,7 +1462,6 @@ async function openRecord(index) {
     return;
   }
 
-  // عرض هياكل تحميل
   $("recordsView").classList.add("hidden");
   $("studentsView").classList.remove("hidden");
   showStudentsSkeleton();
@@ -1416,7 +1494,6 @@ function showStudentsSkeleton() {
 async function loadStudents(forceRefresh = false) {
   const recordId = session.currentRecord.recordId;
 
-  // إذا كان هناك تخزين مؤقت ولم يُطلب تحديث قسري
   if (!forceRefresh && session.studentsCache[recordId]) {
     session.students = session.studentsCache[recordId].students;
     session.tools = session.studentsCache[recordId].tools;
@@ -1437,7 +1514,6 @@ async function loadStudents(forceRefresh = false) {
   session.students = data.students || [];
   session.tools = data.tools || [];
 
-  // تحديث التخزين المؤقت
   session.studentsCache[recordId] = {
     students: session.students,
     tools: session.tools
@@ -1517,7 +1593,6 @@ function fillTools(id) {
 
   select.appendChild(fragment);
 
-  // استعادة الاختيار السابق إن وُجد
   if (currentValue && [...select.options].some(o => o.value === currentValue)) {
     select.value = currentValue;
   }
@@ -1566,7 +1641,7 @@ function openNote(student) {
 }
 
 /* ═══════════════════════════════════════════════
-   حفظ الدرجة الفردية (مع تحديث محلي)
+   حفظ الدرجة الفردية
    ═══════════════════════════════════════════════ */
 async function saveGrade() {
   if (!session.tools.length) return;
@@ -1595,7 +1670,6 @@ async function saveGrade() {
       return;
     }
 
-    // تحديث محلي مباشر بدون إعادة تحميل
     updateStudentGradeLocally(session.selectedStudent.row, column, grade);
 
     closeModal("gradeModal");
@@ -1609,7 +1683,7 @@ async function saveGrade() {
 }
 
 /* ═══════════════════════════════════════════════
-   حفظ الملاحظة (مع تحديث محلي)
+   حفظ الملاحظة
    ═══════════════════════════════════════════════ */
 async function saveNote() {
   const note = $("noteValue").value.trim();
@@ -1633,7 +1707,6 @@ async function saveNote() {
       return;
     }
 
-    // تحديث محلي
     const student = session.students.find(s => s.row === session.selectedStudent.row);
     if (student) student.note = note;
 
@@ -1674,7 +1747,7 @@ function renderBulkRows() {
     const row = document.createElement("div");
     row.className = "bulk-row";
     row.innerHTML = `
-      <div>${student.name}</div>
+      <div class="student-label">${student.name}</div>
       <input class="control" type="number" step="any"
         data-row="${student.row}" value="${value}" placeholder="الدرجة">
     `;
@@ -1683,6 +1756,21 @@ function renderBulkRows() {
 
   box.innerHTML = "";
   box.appendChild(fragment);
+
+  // ربط عدّاد المرصود بالتحديث الفوري
+  box.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", updateBulkCounter);
+  });
+
+  updateBulkCounter();
+  box.scrollTop = 0;
+}
+
+function updateBulkCounter() {
+  const inputs = document.querySelectorAll("#bulkRows input");
+  const filled = [...inputs].filter(i => i.value.trim() !== "").length;
+  $("bulkTotalCount").textContent = inputs.length;
+  $("bulkFilledCount").textContent = filled;
 }
 
 async function saveBulk() {
@@ -1717,7 +1805,6 @@ async function saveBulk() {
       return;
     }
 
-    // تحديث محلي لكل طالب
     grades.forEach(g => {
       updateStudentGradeLocally(g.row, column, g.grade);
     });
@@ -1753,7 +1840,6 @@ function updateStudentGradeLocally(row, column, value) {
     });
   }
 
-  // تحديث التخزين المؤقت
   const recordId = session.currentRecord.recordId;
   if (session.studentsCache[recordId]) {
     session.studentsCache[recordId].students = session.students;
@@ -1766,7 +1852,7 @@ function updateStudentGradeLocally(row, column, value) {
 async function refreshStudents() {
   setStatus("جاري تحديث البيانات...", "info");
   try {
-    await loadStudents(true); // true = تحديث قسري
+    await loadStudents(true);
     renderStudents();
     setStatus("تم تحديث البيانات.");
   } catch (error) {
